@@ -1,0 +1,21 @@
+public class Main {
+public static int maxcount(int arr[],int target){
+    int maxcount=0,count=0;
+    for(int n:arr){
+        if(n==target){
+            count++;
+            maxcount=Math.max(count,maxcount);
+        } else{
+            count=0;
+        }
+    } return maxcount;
+}
+
+    public static void main(String[] args) {
+int arr[]={1,0,1,1,0,0,1,1,1,1};
+System.out.println("Max consecutive zeros are :"+maxcount(arr,0));
+        System.out.println("Max consecutive ones are :"+maxcount(arr,1));
+
+    }
+
+}
