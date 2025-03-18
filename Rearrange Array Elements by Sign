@@ -1,0 +1,42 @@
+/*Given an array arr[] of size n, the task is to rearrange it in alternate positive and negative manner
+without changing the relative order of positive and negative numbers. In case of extra positive/negative numbers,
+they appear at the end of the array.*/
+
+import java.util.*;
+
+public class Main {
+
+    public void arrange(int []arr){
+        ArrayList<Integer>pos=new ArrayList<>();
+        ArrayList<Integer>neg=new ArrayList<>();
+for(int n:arr){
+    if(n>=0){
+        pos.add(n);
+    } else{
+        neg.add(n);
+    }
+}
+
+int i=0,j=0,k=0;
+while(i<pos.size()&&j<neg.size()){
+    arr[k++]=pos.get(i++);
+    arr[k++]=neg.get(j++);
+} while(i< pos.size()){
+    arr[k++]=pos.get(i++);
+        }
+while(j<neg.size()){
+    arr[k++]=neg.get(j++);
+}
+System.out.println(Arrays.toString(arr));
+    }
+    public static void main(String[] args) {
+
+Main obj=new Main();
+int arr[]={1, 2, 3, -4, -1, 4};
+obj.arrange(arr);
+
+
+
+
+    }
+}
