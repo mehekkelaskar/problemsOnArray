@@ -1,0 +1,28 @@
+/*Given an array arr[] of size n, the task is to find all the Leaders in the array. 
+An element is a Leader if it is greater than or equal to all the elements to its right side.*/
+
+
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        int arr[] = {1, 2, 3, 4, 5, 2};
+        List<Integer> leaders = new ArrayList<>();
+        
+        int maxFromRight = arr[arr.length - 1];
+        leaders.add(maxFromRight);  // Last element is always a leader
+
+       
+        for (int i = arr.length - 2; i >= 0; i--) {
+            if (arr[i] >= maxFromRight) {
+                leaders.add(arr[i]);
+                maxFromRight = arr[i];
+            }
+        }
+
+       
+        Collections.reverse(leaders);
+        System.out.println(leaders);
+    }
+}
