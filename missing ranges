@@ -1,0 +1,47 @@
+/*You have an inclusive interval [lower, upper] and a sorted array of unique integers arr[],
+all of which lie within this interval. A number x is considered missing if x is in the range [lower, upper] but not present in arr. 
+Your task is to return the smallest set of sorted ranges that includes all missing numbers, ensuring no element from arr is within any range, and every missing number is covered exactly once.*/
+import java.util.*;
+
+public class Main {
+
+
+    public static String formatRange(int start, int end) {
+        return start == end ? String.valueOf(start) : start + " -> " + end;
+
+    }
+
+    public static void main(String[] args) {
+
+
+        int arr[] = {14, 15, 20, 30, 31, 45};
+        int lower = 10, upper = 50;
+        int k = 0;
+        List<String> r = new ArrayList<>();
+        if (arr.length == 0) {
+            r.add(formatRange(lower, upper));
+
+        }
+        if (lower < arr[0]) {
+            r.add(formatRange(lower, arr[0] - 1));
+
+        }
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > arr[i - 1] + 1) {
+                r.add(formatRange(arr[i - 1] + 1, arr[i] - 1));
+            }
+
+
+        }
+
+        if (upper > arr[arr.length - 1]) {
+            r.add(formatRange(arr[arr.length - 1] + 1, upper));
+        }
+
+
+        System.out.println(r);
+
+
+    }
+}
+
